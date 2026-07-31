@@ -2,7 +2,14 @@
 
 **A full-stack web application** for building and exploring a personal music library with AI-driven insights and analytics, sourced from the iTunes public catalog.
 
-**GitHub**: [Your GitHub Repo URL]  
+**Developer**: Jaya Prakash Maneri  
+**Location**: Puttaparthi, Andhra Pradesh, India  
+**Phone**: +91 9014792534  
+**Email**: manerijayaprakash@gmail.com  
+**GitHub Profile**: [jayaprakashroya](https://github.com/jayaprakashroya)  
+**Portfolio**: [My Portfolio](https://jayaprakashroya.github.io/Myportofolio/)  
+**LinkedIn**: [Maneri Jaya Prakash](https://www.linkedin.com/in/maneri-jaya-prakash9014/)  
+**Project Repository**: [Ledger Assignment GitHub Repo](https://github.com/jayaprakashroya/Ledger-Assignment)  
 **Live Demo**: [Deployment URL - Vercel/Render]
 
 ---
@@ -729,8 +736,9 @@ MIT License - See LICENSE.md
 
 ## 👨‍💻 Author
 
-**Your Name**  
-[GitHub](https://github.com/yourname) | [LinkedIn](https://linkedin.com/in/yourname) | [Email](mailto:your@email.com)
+**Jaya Prakash Maneri**  
+Puttaparthi, Andhra Pradesh, India  
+[GitHub](https://github.com/jayaprakashroya) | [LinkedIn](https://www.linkedin.com/in/maneri-jaya-prakash9014/) | [Email](mailto:manerijayaprakash@gmail.com)
 
 ---
 
@@ -1091,9 +1099,3 @@ MIT License – See LICENSE file for details.
   - Auto-saves JWT tokens between requests
   - Pre-configured environment variables
   - Test workflow examples
-```
-
-The frontend runs on `http://localhost:3000` and proxies to the backend at `http://localhost:8080/api`.
-
-## Deployment notes
-This repository is prepared for container-style deployment. The backend can be deployed to Render/Railway/AWS and the frontend to Vercel/Netlify.
