@@ -1,0 +1,403 @@
+{
+  "info": {
+    "_postman_id": "music-catalog-insights",
+    "name": "Music Catalog Insights API",
+    "description": "Full REST API collection for Music Catalog Insights Platform\n\n**Base URL**: http://localhost:8080/api\n\n**Auth**: JWT Bearer token (obtain via /auth/register or /auth/login)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "  var jsonData = pm.response.json();",
+                  "  pm.environment.set('token', jsonData.token);",
+                  "  pm.environment.set('email', jsonData.email);",
+                  "  pm.environment.set('user_id', jsonData.user_id);",
+                  "  console.log('✅ Token saved to environment');",
+                  "} else {",
+                  "  console.log('❌ Registration failed:', pm.response.text());",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"testuser@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": ["{{base_url}}/auth/register"],
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  var jsonData = pm.response.json();",
+                  "  pm.environment.set('token', jsonData.token);",
+                  "  pm.environment.set('email', jsonData.email);",
+                  "  pm.environment.set('user_id', jsonData.user_id);",
+                  "  console.log('✅ Logged in successfully');",
+                  "} else {",
+                  "  console.log('❌ Login failed:', pm.response.text());",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"testuser@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": ["{{base_url}}/auth/login"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {
+          "name": "Search Albums",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/search?q=Coldplay",
+              "host": ["{{base_url}}/search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Coldplay",
+                  "description": "Album or artist name to search"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search for Adele",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/search?q=Adele",
+              "host": ["{{base_url}}/search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Adele"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search for Radiohead",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/search?q=Radiohead",
+              "host": ["{{base_url}}/search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Radiohead"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "item": [
+        {
+          "name": "Get All Library Items",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/library",
+              "host": ["{{base_url}}/library"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Album to Library",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "  var jsonData = pm.response.json();",
+                  "  pm.environment.set('library_item_id', jsonData.id);",
+                  "  console.log('✅ Album added, ID:', jsonData.id);",
+                  "} else {",
+                  "  console.log('❌ Failed to add album:', pm.response.text());",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"apple_catalog_id\": \"1234567890\",\n  \"title\": \"Parachutes\",\n  \"artist_name\": \"Coldplay\",\n  \"genre\": \"Alternative Rock\",\n  \"release_date\": \"2000-07-10\",\n  \"track_count\": 12,\n  \"artwork_url\": \"https://example.com/artwork.jpg\",\n  \"price\": 9.99,\n  \"user_rating\": 5,\n  \"user_notes\": \"Great debut album!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/library",
+              "host": ["{{base_url}}/library"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Library Item (Rating)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_rating\": 4,\n  \"user_notes\": \"Updated notes - still love it!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/library/{{library_item_id}}",
+              "host": ["{{base_url}}/library/{{library_item_id}}"],
+              "path": ["api", "library", "{{library_item_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Library Item by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/library/{{library_item_id}}",
+              "host": ["{{base_url}}/library/{{library_item_id}}"],
+              "path": ["api", "library", "{{library_item_id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Library Item",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/library/{{library_item_id}}",
+              "host": ["{{base_url}}/library/{{library_item_id}}"],
+              "path": ["api", "library", "{{library_item_id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/library/analytics",
+              "host": ["{{base_url}}/library/analytics"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Insights",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/library/insights",
+              "host": ["{{base_url}}/library/insights"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}/health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Auto-set base_url if not already set",
+          "if (!pm.environment.get('base_url')) {",
+          "  pm.environment.set('base_url', 'http://localhost:8080/api');",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string",
+      "description": "JWT token (auto-populated after login/register)"
+    },
+    {
+      "key": "email",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "library_item_id",
+      "value": "",
+      "type": "string",
+      "description": "ID of last created library item"
+    }
+  ]
+}

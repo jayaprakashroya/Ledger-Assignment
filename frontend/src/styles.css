@@ -1,0 +1,43 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #f7f7ff;
+  background: linear-gradient(135deg, #111827, #312e81);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; background: linear-gradient(135deg, #111827, #312e81); color: #f7f7ff; }
+button, input, select, textarea { font: inherit; }
+img { width: 100%; border-radius: 12px; object-fit: cover; }
+a { color: inherit; text-decoration: none; }
+
+.app-shell { min-height: 100vh; }
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 10; }
+.brand { font-size: 1.25rem; font-weight: 700; }
+.nav-links, .nav-actions { display: flex; gap: 1rem; align-items: center; }
+.nav-links a { padding: 0.5rem 0.8rem; border-radius: 999px; }
+.nav-links a.active { background: #4ecdc4; color: #0f172a; }
+.main-content { padding: 2rem; }
+.panel { background: rgba(15, 23, 42, 0.78); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 1.5rem; box-shadow: 0 16px 30px rgba(0,0,0,0.2); }
+.page-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+.search-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.search-bar input, .search-bar select, .auth-form input, .auth-form select, .edit-form textarea, .edit-form select { width: 100%; padding: 0.7rem 0.9rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: white; }
+button { cursor: pointer; padding: 0.7rem 1rem; border-radius: 10px; border: none; background: linear-gradient(135deg, #4ecdc4, #45b7d1); color: #04111f; font-weight: 600; }
+.ghost-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; }
+.danger-btn { background: #ff6b6b; }
+.card-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.album-card { border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1rem; background: rgba(255,255,255,0.04); display: flex; flex-direction: column; gap: 0.75rem; }
+.album-card img { height: 140px; } .action-row { display: flex; gap: 0.5rem; }
+.status-message { color: #9bf0e1; }
+.auth-panel { display: flex; flex-direction: column; gap: 1rem; }
+.toggle { display: flex; gap: 0.5rem; }
+.toggle button.active { background: #ff6b6b; color: white; }
+.auth-form { display: flex; flex-direction: column; gap: 0.7rem; }
+.empty-state { padding: 2rem; text-align: center; color: #d7e6ff; }
+.analytics-panel { display: flex; flex-direction: column; gap: 1rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+.stat-card { background: rgba(255,255,255,0.06); border-radius: 14px; padding: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.chart-grid { display: grid; grid-template-columns: repeat(2, minmax(300px, 1fr)); gap: 1rem; }
+.chart-card { background: rgba(255,255,255,0.05); border-radius: 14px; padding: 1rem; min-height: 280px; }
+.insight-box { background: rgba(78, 205, 196, 0.16); border: 1px solid rgba(78,205,196,0.25); border-radius: 14px; padding: 1rem; }
+.edit-form { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem; }
+@media (max-width: 900px) { .page-grid, .chart-grid { grid-template-columns: 1fr; } .navbar { flex-direction: column; gap: 0.8rem; } }
