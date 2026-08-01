@@ -2,7 +2,7 @@
 
 Complete step-by-step guide to deploy Music Catalog Insights Platform to production.
 
----
+---c 
 
 ## 🚀 Quick Deployment Overview
 
@@ -21,7 +21,7 @@ Complete step-by-step guide to deploy Music Catalog Insights Platform to product
 ### 1.1 Backend Configuration
 
 Edit `backend/src/main/resources/application-prod.properties`:
-
+ 
 ```properties
 # Server
 server.port=8080
