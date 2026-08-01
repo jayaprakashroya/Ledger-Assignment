@@ -6,7 +6,6 @@ import { Trash2 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import NavBar from '../../components/NavBar';
-import ProtectedRoute from '../../components/ProtectedRoute';
 import RatingStars from '../../components/RatingStars';
 import { libraryApi } from '../../lib/api';
 import { useAuthStore } from '../../lib/store';
@@ -95,8 +94,7 @@ export default function LibraryPage() {
   }, [genreFilter, ratingFilter, items]);
 
   return (
-    <ProtectedRoute>
-      <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-slate-950 text-white">
         <NavBar />
         <main className="container py-10">
           <div className="mb-6 rounded-3xl border border-white/10 bg-slate-900/80 p-6 shadow-soft">
@@ -207,6 +205,5 @@ export default function LibraryPage() {
           )}
         </main>
       </div>
-    </ProtectedRoute>
-  );
-}
+    );
+  }

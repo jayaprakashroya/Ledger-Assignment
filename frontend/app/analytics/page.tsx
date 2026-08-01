@@ -5,7 +5,6 @@ export const dynamic = 'force-dynamic';
 import { useEffect, useState } from 'react';
 import { Bar, BarChart, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import NavBar from '../../components/NavBar';
-import ProtectedRoute from '../../components/ProtectedRoute';
 import { libraryApi } from '../../lib/api';
 
 const COLORS = ['#06b6d4', '#8b5cf6', '#fb7185', '#f59e0b', '#10b981', '#ef4444'];
@@ -80,12 +79,11 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <ProtectedRoute>
-      <div className="min-h-screen bg-slate-950 text-white">
-        <NavBar />
-        <main className="container py-10">
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="card lg:col-span-2">
+    <div className="min-h-screen bg-slate-950 text-white">
+      <NavBar />
+      <main className="container py-10">
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="card lg:col-span-2">
               <h3 className="text-lg font-semibold">Releases by Year</h3>
               <div style={{ height: 300 }}>
                 <ResponsiveContainer>
@@ -153,6 +151,4 @@ export default function AnalyticsPage() {
           </div>
         </main>
       </div>
-    </ProtectedRoute>
-  );
-}
+

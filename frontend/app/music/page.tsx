@@ -6,7 +6,6 @@ import { Music, Play } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import NavBar from '../../components/NavBar';
-import ProtectedRoute from '../../components/ProtectedRoute';
 import { searchApi } from '../../lib/api';
 import { usePlayerStore, type Track } from '../../lib/playerStore';
 
@@ -77,8 +76,7 @@ export default function MusicPage() {
   const resultCount = useMemo(() => results.length, [results]);
 
   return (
-    <ProtectedRoute>
-      <div className="min-h-screen bg-slate-950 text-white pb-24">
+    <div className="min-h-screen bg-slate-950 text-white pb-24">
         <NavBar />
         <main className="container py-10">
           <div className="mb-6 rounded-3xl border border-white/10 bg-slate-900/80 p-6 shadow-soft">
@@ -166,6 +164,6 @@ export default function MusicPage() {
           )}
         </main>
       </div>
-    </ProtectedRoute>
-  );
+    );
+  }
 }
