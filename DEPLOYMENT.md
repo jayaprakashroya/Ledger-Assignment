@@ -158,7 +158,7 @@ curl https://music-catalog-api.onrender.com/api/health
 ### 3.3 Add Environment Variables
 
 1. Click **"Environment Variables"**
-2. Add:
+2. Add:  
    - **Name**: `NEXT_PUBLIC_API_BASE_URL`
    - **Value**: `https://music-catalog-api.onrender.com/api`
    - **Environments**: Select all (Production, Preview, Development)
