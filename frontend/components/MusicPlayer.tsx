@@ -182,8 +182,8 @@ export default function MusicPlayer() {
                       background: `linear-gradient(to top, rgb(34, 197, 94) 0%, rgb(34, 197, 94) ${
                         volume * 100
                       }%, rgb(30, 41, 59) ${volume * 100}%, rgb(30, 41, 59) 100%)`,
-                    }}
-                    orient="vertical"
+                    } as React.CSSProperties}
+                    // @ts-ignore - orient is a valid HTML input attribute for styling
                   />
                   <span className="text-xs text-slate-400">{Math.round(volume * 100)}%</span>
                 </div>
