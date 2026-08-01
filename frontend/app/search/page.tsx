@@ -1,7 +1,6 @@
 'use client';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = false;
 
 import { useEffect, useMemo, useState } from 'react';
 import { toast } from 'sonner';
